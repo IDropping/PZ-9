@@ -19,15 +19,30 @@
                 <GradientStop Color="#FF341515" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <InkCanvas x:Name="inkCanvas1" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
+        <InkCanvas x:Name="inkCanvas1" HorizontalAlignment="Left" Height="254" Margin="10,24,0,0" VerticalAlignment="Top" Width="772"/>
         <Button Content="Очистить" HorizontalAlignment="Left" Margin="706,384,0,0" VerticalAlignment="Top" Width="84" Height="31" Click="Button_Click"/>
         <Button Content="Закрыть" HorizontalAlignment="Left" Margin="706,338,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="1.019,-0.416" Height="31" Click="Button_Click_1"/>
         <Slider x:Name="sld_RedColor" Background="Red" Minimum="0" Maximum="255" HorizontalAlignment="Left" Margin="25,322,0,0" VerticalAlignment="Top" Width="269" ValueChanged="sld_Color_ValueChanged"/>
         <Slider x:Name="sld_GreenColor" Background="Green" Minimum="0" Maximum="255" HorizontalAlignment="Left" Margin="25,342,0,0" VerticalAlignment="Top" Width="269" ValueChanged="sld_Color_ValueChanged"/>
         <Slider x:Name="sld_BlueColor" Background="Blue" Minimum="0" Maximum="255" HorizontalAlignment="Left" Margin="25,362,0,0" VerticalAlignment="Top" Width="269" ValueChanged="sld_Color_ValueChanged"/>
 
-        <Label x:Name="lbl1" Content="Выбранный цвет" HorizontalAlignment="Left" Margin="355,338,0,0" VerticalAlignment="Top" Background="#FFF9F9F9"/>
-        <Button Content="Выбор цвета" HorizontalAlignment="Left" Margin="512,341,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.176,-0.711" Click="Button_Click_2" Height="26"/>
-
+        <Label x:Name="lbl1" Content="Выбранный цвет" HorizontalAlignment="Left" Margin="338,324,0,0" VerticalAlignment="Top" Background="#FFF9F9F9"/>
+        <Button Content="Выбор цвета" HorizontalAlignment="Left" Margin="338,366,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.176,-0.711" Click="Button_Click_2" Height="26"/>
+        <Label Content="Выбрать размер кисти " HorizontalAlignment="Left" Margin="474,278,0,0" VerticalAlignment="Top" Width="177" FontSize="16" Foreground="White"/>
+        <RadioButton Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="474,314,0,0" FontSize="16" Checked="RadioButton_Checked_1" Foreground="White"/>
+        <RadioButton Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="474,339,0,0" FontSize="16" Checked="RadioButton_Checked_2" Foreground="White"/>
+        <RadioButton Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="474,364,0,0" FontSize="16" Checked="RadioButton_Checked_3" Foreground="White"/>
+        <RadioButton Content="Сброс" HorizontalAlignment="Left" Margin="540,342,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#FF9E9696" Foreground="#FFFFF6F6" Checked="RadioButton_Checked"/>
+        <Menu Height="19" VerticalAlignment="Top" Margin="0,-2,0,0">
+            <MenuItem Header="Инструменты">
+                <MenuItem Header="Очистить" Click="MenuItem_Click_1" />
+                <MenuItem Header="Сохранить" Click="MenuItem_Click" ></MenuItem>
+           
+               
+               
+                <Separator/>
+                <MenuItem Header="Exit" Click="MenuItem_Click_4" ></MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Kraski
 {
@@ -79,7 +80,70 @@ namespace Kraski
             {
                 lbl1.Background = new SolidColorBrush(Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B));
             }
-            clr = Color.FromRgb(mcolor.red, mcolor.green, mcolor.blue);
+            clr = Color.FromRgb(dialog.Color.R, dialog.Color.G, dialog.Color.B);
+           
+            this.inkCanvas1.DefaultDrawingAttributes.Color = clr; 
+        }
+
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.DefaultDrawingAttributes.Width = 15;
+            this.inkCanvas1.DefaultDrawingAttributes.Height = 15;
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.DefaultDrawingAttributes.Width = 10;
+            this.inkCanvas1.DefaultDrawingAttributes.Height = 10;
+        }
+
+        private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.DefaultDrawingAttributes.Width = 20;
+            this.inkCanvas1.DefaultDrawingAttributes.Height = 20;
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.DefaultDrawingAttributes.Width = 1;
+            this.inkCanvas1.DefaultDrawingAttributes.Height = 1;
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.Strokes.Clear();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.EditingMode = InkCanvasEditingMode.None;
+            string imgPath = @"D:\file.png";
+            MemoryStream ms = new MemoryStream();
+            FileStream fs = new FileStream(imgPath, FileMode.Create);
+
+            //rtb - объект класса RenderTargetBitmap
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)inkCanvas1.Width, (int)inkCanvas1.Height, 96, 96, PixelFormats.Default);
+            rtb.Render(inkCanvas1);
+
+            GifBitmapEncoder gifEnc = new GifBitmapEncoder();
+            gifEnc.Frames.Add(BitmapFrame.Create(rtb));
+            gifEnc.Save(fs);
+            fs.Close();
+            this.inkCanvas1.EditingMode = InkCanvasEditingMode.Ink;
+        }
+
+
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            this.inkCanvas1.DefaultDrawingAttributes.Width = 5;
+            this.inkCanvas1.DefaultDrawingAttributes.Height = 5;
+            this.lbl1.Background = new SolidColorBrush(Color.FromRgb(mcolor.red, mcolor.green, mcolor.blue));
             this.inkCanvas1.DefaultDrawingAttributes.Color = clr;
         }
     }
